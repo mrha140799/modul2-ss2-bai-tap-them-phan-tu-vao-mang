@@ -18,10 +18,10 @@ public class ChenPhanTu {
 
         if (index < 0 || index >arr.length) {
             System.out.println("Bạn nhập sai nên không thể thêm");
+        }else {
+            inputValue(arr, index, value);
+            xuatMang(arr);
         }
-        inputValue(arr, index,value);
-        xuatMang(arr);
-
 
     }
     private static void xuatMang(int arr[]) {
@@ -31,16 +31,12 @@ public class ChenPhanTu {
     }
 
     private static void inputValue(int arr[] , int index , int value) {
-        int indexMax = 0;
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == 0) {
-                indexMax = i -1;
-            }
-        }
-
-        for (int i = indexMax +1 ; i >index ; i--) {
-            arr[i] = arr[i-1];
-        }
+        int temp1 = arr[index];
         arr[index] = value;
+        for (int i = index +1 ; i < arr.length ; i++) {
+            int temp2 = arr[i];
+            arr[i] = temp1;
+            temp1 = temp2;
+        }
     }
 }
